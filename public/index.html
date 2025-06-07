@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type = "text/css" />
     <link rel="stylesheet" href="/styles/header.css" type = "text/css"/>
+    <link rel="stylesheet" href="/styles/new-tweet.css" type = "text/css"/>
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -43,8 +44,17 @@
     </header>
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <span>tweet here</span>
-      <span>tweet there</span>
+     <section class="new-tweet">
+      <h2>Compose Tweet</h2>
+      <form method = "POST" action = "/api/tweets" class="tweetTextArea">
+        <label for ="tweet-text" id="tweetTextInput">What are you humming about?</label>
+        <textarea name="text" id="tweet-text"></textarea>
+        <div class="tweetCount">
+          <button type = "submit" class="button">Tweet</button>
+          <output name = "counter" class = "counter" for = "tweet-text">140</output>
+        </div>
+      </form>
+     </section>
     </main>
   </body>
 </html>

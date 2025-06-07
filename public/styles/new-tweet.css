@@ -1,0 +1,30 @@
+.new-tweet{
+  font-family: "Bungee";
+}
+.tweetTextArea{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: max;
+}
+#tweetTextInput{
+  font-family: "Source Sans 3";
+}
+
+.tweetCount{
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee";
+  padding-top: 5px;
+}
+.tweet-text{
+  border-bottom: solid;
+
+}
+
+.form .div{
+  font-family:"Bungee" ;
+}
+.button{
+  background-color: #4056A1;
+}
