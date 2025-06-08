@@ -20,9 +20,12 @@
 
 }
 #tweet-text{
-  border-bottom: black;
-  
+  border-width: 0 0 5px 0;
+  background:transparent;
   font-family: "Source Sans 3";
+  border-bottom: solid black;
+  resize: none;
+  
 }
 
 .button{
