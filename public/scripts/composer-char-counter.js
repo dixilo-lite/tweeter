@@ -1,7 +1,5 @@
 $(document).ready(()=>{
 
-  console.log("I'm ready");
-
   $("#tweet-text").on('input', function(){
     const maxLength =140;
     const textLength = $(this).val().length;
@@ -15,8 +13,6 @@ $(document).ready(()=>{
     } else {
       counterElement.css('color', 'black');
     }
-
-    console.log($(this).text().length);
 
 });
 

@@ -1,0 +1,46 @@
+
+.tweet {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 5px;
+  border: 5px solid black;
+}
+
+.tweet:hover {
+  box-shadow: 10px 5px 5px black ;
+}
+article.tweet header{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between ;
+  padding: 0px 20px;
+  background-color: inherit;
+  color:black;
+}
+
+article.tweet p{
+  padding:0px 20px;
+}
+
+article.tweet footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding:0px 20px;
+}
+
+.fa-solid.fa-flag:hover {
+  color:gold;
+}
+
+
+.fa-solid.fa-retweet:hover {
+  color:gold;
+}
+
+.fa-solid.fa-heart:hover {
+  color:gold;
+}
+
