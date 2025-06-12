@@ -32,7 +32,7 @@ const createTweetElement = (tweetData)=>{
   return $(`  
       <article class="tweet">
         <header>
-          <img src ="${tweetData.user.avatars}" alt ="User Avatar"</h3>
+          <img src ="${tweetData.user.avatars}" alt ="User Avatar">
           <h3>${tweetData.user.handle}</h3>
         </header>
         
@@ -52,15 +52,11 @@ const createTweetElement = (tweetData)=>{
 
 const renderTweets = (tweetData) => {
   const $container= $('#tweets-container');
-  console.log($container);
+
   for(const user of tweetData){
     const $tweetNode= createTweetElement(user);
-    console.log($tweetNode);
     $container.prepend($tweetNode);
   }
 }
-//const $tweet = createTweetElement(tweetData);
-//console.log($tweet);
-//$('#tweets-container').append($tweet);
 
 renderTweets(tweetData);
