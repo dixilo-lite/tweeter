@@ -59,4 +59,25 @@ const renderTweets = (tweetData) => {
   }
 }
 
+
+
+const $form = $(".new-tweet-container");
+
+$form.on("submit", (event) => {
+  event.preventDefault();
+  console.log("form submitted");
+  const formData = $form.serialize();
+  console.log(formData);
+  $.ajax({
+    method:"POST",
+    url:"/api/tweets",
+    dataType:"json",
+    data:formData,
+    success:(tweetData) => {
+      console.log("success");
+     
+    },
+  })
+})
+
 renderTweets(tweetData);
