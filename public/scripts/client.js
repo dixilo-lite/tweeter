@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+
 const tweetData = [
   {
     "user": {
@@ -69,19 +71,34 @@ const renderTweets = (tweetData) => {
     },
   })
  }
+ const isTweetValid = (event) => {
+ const textLength = $("#tweet-text").val().trim().length;
+
+ if (textLength > 0 && textLength < 140 )
+  {
+    return true;
+  }
+  if (textLength === 0){
+    event.preventDefault();
+     alert("Please enter text to tweet");
+    return false;
+  }
+  if (textLength > 140) {
+    event.preventDefault();
+    alert("You have gone over the character limit, please remove some chracters");
+    return false;
+  }
+
+ }
 
 
 const $form = $(".new-tweet-container");
 
 $form.on("submit", (event) => {
   event.preventDefault();
-  const textLength = $("#tweet-text").val().length;
-  console.log(`this is the text length ${textLength}`);
-  if(textLength === 0 || textLength > 0){
-    event.preventDefault();
-    alert("Please double check the character counter, you have gone over or attempt to tweet nothing");
-  } else {
-    console.log("form submitted");
+  if(isTweetValid(event))
+  {
+     console.log("form submitted");
     const formData = $form.serialize();
     console.log(formData);
     $.ajax({
@@ -98,9 +115,8 @@ $form.on("submit", (event) => {
       console.log("error occured");
       console.log(error);
     }
-  })
+  });
   }
-  
-})
+});
 
 loadTweets(tweetData);
