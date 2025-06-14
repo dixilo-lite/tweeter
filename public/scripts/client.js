@@ -75,10 +75,16 @@ const $form = $(".new-tweet-container");
 
 $form.on("submit", (event) => {
   event.preventDefault();
-  console.log("form submitted");
-  const formData = $form.serialize();
-  console.log(formData);
-  $.ajax({
+  const textLength = $("#tweet-text").val().length;
+  console.log(`this is the text length ${textLength}`);
+  if(textLength === 0 || textLength > 0){
+    event.preventDefault();
+    alert("Please double check the character counter, you have gone over or attempt to tweet nothing");
+  } else {
+    console.log("form submitted");
+    const formData = $form.serialize();
+    console.log(formData);
+    $.ajax({
     method:"POST",
     url:"/api/tweets",
     dataType:"json",
@@ -87,7 +93,14 @@ $form.on("submit", (event) => {
       console.log("success");
       loadTweets(tweetData);     
     },
+    error:(error) =>
+    {
+      console.log("error occured");
+      console.log(error);
+    }
   })
+  }
+  
 })
 
 loadTweets(tweetData);
