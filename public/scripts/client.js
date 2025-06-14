@@ -77,19 +77,27 @@ const renderTweets = (tweetData) => {
  if (text.length > 0 && text.length < 140 )
   {
     return true;
-  } else {
+  } else if (text.length === 0 || text.length > 140) {
     return false;
   }
 
  }
+ const invalidTweetAlert = (text) =>  {
+  if(text.length === 0) {
+    alert("Please enter text to tweet");
+  }
 
+  if(text.length > 140) {
+    alert("You have gone over the character limit, please remove some chracters");
+  }
+ }
 
 const $form = $(".new-tweet-container");
 
 $form.on("submit", (event) => {
   event.preventDefault();
-  const textLength = $("#tweet-text").val().trim().length;
-  if(isTweetValid(textLength)) {
+  const tweetText = $("#tweet-text").val().trim();
+  if(isTweetValid(tweetText)) {
     console.log("form submitted");
     const formData = $form.serialize();
     console.log(formData);
@@ -109,16 +117,7 @@ $form.on("submit", (event) => {
     }
   });
   } else {
-    if (text.length === 0){
-    
-     alert("Please enter text to tweet");
-  
-    }
-    if (text.length > 140) {
-    
-    alert("You have gone over the character limit, please remove some chracters");
-
-    }
+   invalidTweetAlert(tweetText);
   }
 });
 
