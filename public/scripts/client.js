@@ -77,15 +77,7 @@ const renderTweets = (tweetData) => {
  if (text.length > 0 && text.length < 140 )
   {
     return true;
-  }
-  if (text.length === 0){
-    
-     alert("Please enter text to tweet");
-    return false;
-  }
-  if (text.length > 140) {
-    
-    alert("You have gone over the character limit, please remove some chracters");
+  } else {
     return false;
   }
 
@@ -117,7 +109,16 @@ $form.on("submit", (event) => {
     }
   });
   } else {
-    event.preventDefault;
+    if (text.length === 0){
+    
+     alert("Please enter text to tweet");
+  
+    }
+    if (text.length > 140) {
+    
+    alert("You have gone over the character limit, please remove some chracters");
+
+    }
   }
 });
 
