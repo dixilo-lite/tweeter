@@ -3,33 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-
-
-const tweetData = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1736200735747
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1736287135747
-  }
-]
  
 const createTweetElement = (tweetData)=>{
   return $(`  
@@ -52,9 +25,9 @@ const createTweetElement = (tweetData)=>{
       </article>
     `);
 }
-
+const $container= $('#tweets-container');
 const renderTweets = (tweetData) => {
-  const $container= $('#tweets-container');
+  
 
   for(const user of tweetData){
     const $tweetNode= createTweetElement(user);
@@ -62,6 +35,10 @@ const renderTweets = (tweetData) => {
   }
 }
  const loadTweets = () => {
+  console.log("load tweets called");
+  const tweetContainer = document.getElementById('tweets-container');
+  tweetContainer.innerHTML= '';
+
   $.ajax({
     method:"GET",
     url:"/api/tweets",
@@ -102,13 +79,13 @@ $form.on("submit", (event) => {
     const formData = $form.serialize();
     console.log(formData);
     $.ajax({
-    method:"POST",
-    url:"/api/tweets",
-    dataType:"json",
-    data:formData,
-    success:(tweetData) => {
+      method:"POST",
+      url:"/api/tweets",
+      dataType:"json",
+      data:formData,
+      success:(tweetData) => {
       console.log("success");
-      loadTweets(tweetData);     
+      loadTweets();     
     },
     error:(error) =>
     {
@@ -121,4 +98,6 @@ $form.on("submit", (event) => {
   }
 });
 
-loadTweets(tweetData);
+$(document).ready(() => {
+  loadTweets();
+});
