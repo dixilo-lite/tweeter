@@ -3,6 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
 const tweetData = [
   {
     "user": {
@@ -39,7 +40,7 @@ const createTweetElement = (tweetData)=>{
         <p name="text" id="tweet-text">${tweetData.content.text}</p>
         
         <footer>
-          <h5>${tweetData.created_at}</h5>
+          <h5>${timeago.format(tweetData.created_at)}</h5>
           <div class="tweet-action">
           <i class="fa-solid fa-flag"></i>
           <i class="fa-solid fa-retweet"></i>
@@ -58,7 +59,16 @@ const renderTweets = (tweetData) => {
     $container.prepend($tweetNode);
   }
 }
-
+ const loadTweets = () => {
+  $.ajax({
+    method:"GET",
+    url:"/api/tweets",
+    dataType:"json",
+    success:(tweetData)=> {
+      renderTweets(tweetData)
+    },
+  })
+ }
 
 
 const $form = $(".new-tweet-container");
@@ -75,9 +85,9 @@ $form.on("submit", (event) => {
     data:formData,
     success:(tweetData) => {
       console.log("success");
-     
+      loadTweets(tweetData);     
     },
   })
 })
 
-renderTweets(tweetData);
+loadTweets(tweetData);
