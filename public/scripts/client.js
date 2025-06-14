@@ -71,20 +71,20 @@ const renderTweets = (tweetData) => {
     },
   })
  }
- const isTweetValid = (event) => {
- const textLength = $("#tweet-text").val().trim().length;
+ const isTweetValid = (text) => {
+ 
 
- if (textLength > 0 && textLength < 140 )
+ if (text.length > 0 && text.length < 140 )
   {
     return true;
   }
-  if (textLength === 0){
-    event.preventDefault();
+  if (text.length === 0){
+    
      alert("Please enter text to tweet");
     return false;
   }
-  if (textLength > 140) {
-    event.preventDefault();
+  if (text.length > 140) {
+    
     alert("You have gone over the character limit, please remove some chracters");
     return false;
   }
@@ -96,9 +96,9 @@ const $form = $(".new-tweet-container");
 
 $form.on("submit", (event) => {
   event.preventDefault();
-  if(isTweetValid(event))
-  {
-     console.log("form submitted");
+  const textLength = $("#tweet-text").val().trim().length;
+  if(isTweetValid(textLength)) {
+    console.log("form submitted");
     const formData = $form.serialize();
     console.log(formData);
     $.ajax({
@@ -116,6 +116,8 @@ $form.on("submit", (event) => {
       console.log(error);
     }
   });
+  } else {
+    event.preventDefault;
   }
 });
 
