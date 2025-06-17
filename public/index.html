@@ -50,7 +50,10 @@
     <main class="container">
      <section class="new-tweet">
       <h2>Compose Tweet</h2>
+
+      <h1 class = "error-message"></h1>
       <form method = "POST" action = "/api/tweets" class="new-tweet-container">
+       
         <label for ="tweet-text" id="tweetTextInput">What are you humming about?</label>
         <textarea  name="text" id="tweet-text"></textarea>
         <div class="tweetCount">
@@ -61,7 +64,7 @@
      </section>
      
       <section id="tweets-container">
-        </section>
+      </section>
 
   
     </main>

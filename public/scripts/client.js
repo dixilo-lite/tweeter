@@ -3,19 +3,24 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
- 
+ const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = (tweetData)=>{
   return $(`  
       <article class="tweet">
         <header>
           <img src ="${tweetData.user.avatars}" alt ="User Avatar">
-          <h3>${tweetData.user.handle}</h3>
+          <h3>${escape(tweetData.user.handle)}</h3>
         </header>
         
-        <p name="text" id="tweet-text">${tweetData.content.text}</p>
+        <p name="text" id="tweet-text">${escape(tweetData.content.text)}</p>
         
         <footer>
-          <h5>${timeago.format(tweetData.created_at)}</h5>
+          <h5>${escape(timeago.format(tweetData.created_at))}</h5>
           <div class="tweet-action">
           <i class="fa-solid fa-flag"></i>
           <i class="fa-solid fa-retweet"></i>
@@ -60,20 +65,28 @@ const renderTweets = (tweetData) => {
 
  }
  const invalidTweetAlert = (text) =>  {
+  const alertText = $('.error-message');
+  alertText.hide();
   if(text.length === 0) {
-    alert("Please enter text to tweet");
-  }
+    alertText.text("Please enter text to tweet");
+    alertText.slideDown();
 
-  if(text.length > 140) {
-    alert("You have gone over the character limit, please remove some chracters");
-  }
+    //alert("Please enter text to tweet");
+  }else if(text.length > 140) {
+    alertText.text("You have gone over the character limit, please remove some characters");
+    alertText.slideDown();
+    //alert("You have gone over the character limit, please remove some chracters");
+  } 
  }
 
 const $form = $(".new-tweet-container");
 
 $form.on("submit", (event) => {
+  console.log("Form submit event triggered"); // Add this to check
+
   event.preventDefault();
   const tweetText = $("#tweet-text").val().trim();
+ 
   if(isTweetValid(tweetText)) {
     console.log("form submitted");
     const formData = $form.serialize();
@@ -94,10 +107,12 @@ $form.on("submit", (event) => {
     }
   });
   } else {
+    console.log("Invalid tweet");
    invalidTweetAlert(tweetText);
   }
 });
 
 $(document).ready(() => {
+  console.log("JS loaded)");
   loadTweets();
 });
