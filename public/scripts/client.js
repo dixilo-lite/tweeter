@@ -86,8 +86,9 @@ $form.on("submit", (event) => {
 
   event.preventDefault();
   const tweetText = $("#tweet-text").val().trim();
- 
+  const alertText = $('.error-message');
   if(isTweetValid(tweetText)) {
+    alertText.hide();
     console.log("form submitted");
     const formData = $form.serialize();
     console.log(formData);
@@ -107,9 +108,9 @@ $form.on("submit", (event) => {
     }
   });
   } else {
-    console.log("Invalid tweet");
    invalidTweetAlert(tweetText);
   }
+  $('#tweet-text').val('');
 });
 
 $(document).ready(() => {

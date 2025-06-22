@@ -1,4 +1,4 @@
-nav {
+ nav {
   height: 120px;
   background-color: #4056A1;
   color: #FFFFFF;
@@ -10,11 +10,6 @@ nav {
   position:fixed;
   top:0;
 }
-
-nav  span {
-  font-family: "Bungee";
-}
-
 .newTweet{
   display:flex;
   flex-direction: column;
@@ -24,3 +19,33 @@ nav  span {
 .fa-solid.fa-angles-down{
   color:red;
 }
+
+nav  span {
+  font-family: "Bungee";
+}
+@media (min-width: 768px) and (max-width:1023px) {
+ nav{
+  background-color: #0069a1;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+ }
+
+
+
+}
+
+@media (min-width: 1024px) {
+  body {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+  }
+  header{
+   max-width: 500px;
+    margin: 30px;
+  }
+  .container{
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
