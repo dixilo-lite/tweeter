@@ -30,6 +30,8 @@
 .button{
   background-color: #4056A1;
   padding:5px;
+  color:#FFFFFF;
+  border:none;
 }
 
 .error-message{

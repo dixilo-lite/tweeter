@@ -10,6 +10,7 @@
   position:fixed;
   top:0;
 }
+
 .newTweet{
   display:flex;
   flex-direction: column;
@@ -23,14 +24,12 @@
 nav  span {
   font-family: "Bungee";
 }
+
 @media (min-width: 768px) and (max-width:1023px) {
  nav{
   background-color: #0069a1;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
  }
-
-
-
 }
 
 @media (min-width: 1024px) {
@@ -39,7 +38,7 @@ nav  span {
     justify-content:space-between;
     align-items: center;
   }
-  header{
+   #avatar-img{
    max-width: 500px;
     margin: 30px;
   }
