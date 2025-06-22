@@ -70,40 +70,32 @@ const renderTweets = (tweetData) => {
   if(text.length === 0) {
     alertText.text("Please enter text to tweet");
     alertText.slideDown();
-
-    //alert("Please enter text to tweet");
   }else if(text.length > 140) {
     alertText.text("You have gone over the character limit, please remove some characters");
     alertText.slideDown();
-    //alert("You have gone over the character limit, please remove some chracters");
   } 
  }
 
 const $form = $(".new-tweet-container");
 
 $form.on("submit", (event) => {
-  console.log("Form submit event triggered"); // Add this to check
 
   event.preventDefault();
   const tweetText = $("#tweet-text").val().trim();
   const alertText = $('.error-message');
   if(isTweetValid(tweetText)) {
     alertText.hide();
-    console.log("form submitted");
     const formData = $form.serialize();
-    console.log(formData);
     $.ajax({
       method:"POST",
       url:"/api/tweets",
       dataType:"json",
       data:formData,
       success:(tweetData) => {
-      console.log("success");
       loadTweets();     
     },
     error:(error) =>
     {
-      console.log("error occured");
       console.log(error);
     }
   });
@@ -114,6 +106,5 @@ $form.on("submit", (event) => {
 });
 
 $(document).ready(() => {
-  console.log("JS loaded)");
   loadTweets();
 });
