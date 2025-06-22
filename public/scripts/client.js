@@ -98,11 +98,14 @@ $form.on("submit", (event) => {
     {
       console.log(error);
     }
+
   });
-  } else {
-   invalidTweetAlert(tweetText);
-  }
   $('#tweet-text').val('');
+  $('.counter').text('140');
+  } 
+  
+  invalidTweetAlert(tweetText);
+ 
 });
 
 $(document).ready(() => {

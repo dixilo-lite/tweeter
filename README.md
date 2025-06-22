@@ -16,3 +16,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+
+## Sample Screenshots
+
+!["Screenshot of tweeter on desktop mode"] (https://github.com/dixilo-lite/tweeter/blob/master/public/images/tweeter.png)
+!["Screenshot of tweeter with error message"] (https://github.com/dixilo-lite/tweeter/blob/master/public/images/tweet_error.png)
